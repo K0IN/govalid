@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/gostaticanalysis/codegen/codegentest"
-	"github.com/sivchari/golden"
 
 	"github.com/sivchari/govalid/internal/analyzers/govalid"
 	"github.com/sivchari/govalid/internal/analyzers/markers"
@@ -29,8 +28,5 @@ func TestMinitems(t *testing.T) {
 	}
 
 	results := codegentest.Run(t, codegentest.TestData(), govalid, "minitems")
-	g := golden.New(t, golden.WithUpdate(update))
-	for _, r := range results {
-		g.Assert("minitems", r.Output.String())
-	}
+	codegentest.Golden(t, results, update)
 }

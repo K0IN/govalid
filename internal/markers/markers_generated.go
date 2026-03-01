@@ -50,6 +50,9 @@ var (
 	// GoValidMarkerNumeric is the marker for numeric validation.
 	GoValidMarkerNumeric = "govalid:numeric"
 
+	// GoValidMarkerPattern is the marker for pattern validation.
+	GoValidMarkerPattern = "govalid:pattern"
+
 	// GoValidMarkerRequired is the marker for required validation.
 	GoValidMarkerRequired = "govalid:required"
 
@@ -79,6 +82,7 @@ var GoValidMarkers = map[string]struct{}{
 	GoValidMarkerMinitems: {},
 	GoValidMarkerMinlength: {},
 	GoValidMarkerNumeric: {},
+	GoValidMarkerPattern: {},
 	GoValidMarkerRequired: {},
 	GoValidMarkerUrl: {},
 	GoValidMarkerUuid: {},

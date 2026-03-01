@@ -12,7 +12,7 @@ import (
 	"github.com/sivchari/govalid/internal/analyzers/registry"
 )
 
-func TestMaxitems(t *testing.T) {
+func TestPattern(t *testing.T) {
 	registry := registry.NewRegistry(
 		registry.AddAnalyzers(markers.Initializer()),
 		registry.AddGenerators(govalid.Initializer()),
@@ -27,6 +27,6 @@ func TestMaxitems(t *testing.T) {
 		t.Fatalf("failed to get govalid generator: %v", err)
 	}
 
-	results := codegentest.Run(t, codegentest.TestData(), govalid, "maxitems")
+	results := codegentest.Run(t, codegentest.TestData(), govalid, "pattern")
 	codegentest.Golden(t, results, update)
 }

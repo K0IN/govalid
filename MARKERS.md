@@ -3,15 +3,19 @@
 govalid supports the following markers:
 
 ## `govalid:required`
+
 - **Description**: Ensures that the field is not empty or nil.
 - **Example**:
+
   ```go
   //govalid:required
   type User struct {
       Username string `json:"username"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateUser(t *User) error {
       if t == nil {
@@ -27,15 +31,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:lt`
+
 - **Description**: Ensures that a numeric field is less than a specified value.
 - **Example**:
+
   ```go
   //govalid:lt=18
   type Profile struct {
       Age int `json:"age"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateProfile(t *Profile) error {
       if t == nil {
@@ -51,15 +59,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:lte`
+
 - **Description**: Ensures that a numeric field is less than or equal to a specified value.
 - **Example**:
+
   ```go
   //govalid:lte=65
   type Profile struct {
       Age int `json:"age"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateProfile(t *Profile) error {
       if t == nil {
@@ -75,15 +87,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:gt`
+
 - **Description**: Ensures that a numeric field is greater than a specified value.
 - **Example**:
+
   ```go
   //govalid:gt=100
   type Profile struct {
       Age int `json:"age"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateProfile(t *Profile) error {
       if t == nil {
@@ -99,15 +115,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:gte`
+
 - **Description**: Ensures that a numeric field is greater than or equal to a specified value.
 - **Example**:
+
   ```go
   //govalid:gte=18
   type Profile struct {
       Age int `json:"age"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateProfile(t *Profile) error {
       if t == nil {
@@ -123,15 +143,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:maxlength`
+
 - **Description**: Ensures that a string field's length does not exceed the specified maximum value (Unicode-aware).
 - **Example**:
+
   ```go
   type User struct {
       //govalid:maxlength=50
       Username string `json:"username"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateUser(t *User) error {
       if t == nil {
@@ -147,15 +171,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:minlength`
+
 - **Description**: Ensures that a string field's length is at least the specified minimum value (Unicode-aware).
 - **Example**:
+
   ```go
   type User struct {
       //govalid:minlength=3
       Username string `json:"username"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateUser(t *User) error {
       if t == nil {
@@ -171,15 +199,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:length`
+
 - **Description**: Ensures that a string field has exactly the specified length (Unicode-aware).
 - **Example**:
+
   ```go
   type User struct {
       //govalid:length=7
       Name string `json:"name"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateUser(t *User) error {
       if t == nil {
@@ -193,11 +225,14 @@ govalid supports the following markers:
       return nil
   }
   ```
+
 - **Note**: Uses `utf8.RuneCountInString()` for proper Unicode character counting, ensuring accurate validation for international characters and emojis.
 
 ## `govalid:maxitems`
+
 - **Description**: Ensures that a collection field's length does not exceed the specified maximum number of items. Supports slice, array, map, and channel types.
 - **Example**:
+
   ```go
   type Collection struct {
       //govalid:maxitems=10
@@ -207,7 +242,9 @@ govalid supports the following markers:
       Metadata map[string]string `json:"metadata"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateCollection(t *Collection) error {
       if t == nil {
@@ -227,8 +264,10 @@ govalid supports the following markers:
   ```
 
 ## `govalid:minitems`
+
 - **Description**: Ensures that a collection field's length is at least the specified minimum number of items. Supports slice, array, map, and channel types.
 - **Example**:
+
   ```go
   type Collection struct {
       //govalid:minitems=1
@@ -238,7 +277,9 @@ govalid supports the following markers:
       Tags []string `json:"tags"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateCollection(t *Collection) error {
       if t == nil {
@@ -258,8 +299,10 @@ govalid supports the following markers:
   ```
 
 ## `govalid:enum`
+
 - **Description**: Ensures that a field value is within a specified set of allowed values. Supports string, numeric, and custom types with comparable values. Values should be comma-separated.
 - **Example**:
+
   ```go
   // Custom types
   type UserRole string
@@ -283,7 +326,9 @@ govalid supports the following markers:
       Priority Priority `json:"priority"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateUser(t *User) error {
       if t == nil {
@@ -311,15 +356,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:email`
+
 - **Description**: Ensures that a string field is a valid email address using HTML5-compliant validation.
 - **Example**:
+
   ```go
   type User struct {
       //govalid:email
       Email string `validate:"email" json:"email"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateUser(t *User) error {
       if t == nil {
@@ -335,15 +384,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:url`
+
 - **Description**: Ensures that a string field is a valid URL using HTTP/HTTPS protocol validation.
 - **Example**:
+
   ```go
   type Resource struct {
       //govalid:url
       URL string `validate:"url" json:"url"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateResource(t *Resource) error {
       if t == nil {
@@ -359,15 +412,19 @@ govalid supports the following markers:
   ```
 
 ## `govalid:uuid`
+
 - **Description**: Ensures that a string field is a valid UUID following RFC 4122 format.
 - **Example**:
+
   ```go
   type Resource struct {
       //govalid:uuid
       ID string `json:"id"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateResource(t *Resource) error {
       if t == nil {
@@ -383,10 +440,12 @@ govalid supports the following markers:
   ```
 
 ## `govalid:cel`
+
 - **Description**: Validates fields using Google's Common Expression Language (CEL) for complex validation logic.
-- **Available Variables**: 
+- **Available Variables**:
   - `value`: The current field value being validated
 - **Example**:
+
   ```go
   type Config struct {
       // Numeric validation
@@ -406,7 +465,9 @@ govalid supports the following markers:
       Tags []string `json:"tags"`
   }
   ```
+
 - **Generated Code**:
+
   ```go
   func ValidateConfig(t *Config) error {
       if t == nil {
@@ -432,18 +493,23 @@ govalid supports the following markers:
       return nil
   }
   ```
+
 - **Note**: CEL validation follows govalid's zero-reflection philosophy. Cross-field validation (accessing other struct fields) is not supported.
 
 ## `govalid:alpha`
+
 - **Description**: Ensures that a string field is alphabetical, i.e. all its characters belong to the english alphabet.
 - **Example**:
+
   ```go
     type User struct {
         //govalid:alpha
         FirstName string `json:"first_name"`
     }
     ```
+
 - **Generated Code**:
+
   ```go
   func ValidateUser(t *User) error {
     if t == nil {
@@ -560,3 +626,45 @@ govalid supports the following markers:
   }
 
   ```
+
+## `govalid:pattern`
+
+- **Description**: Ensures that a string field matches a specified regular expression pattern. The pattern uses Go's RE2 regex syntax.
+
+- **Example**:
+
+  ```go
+  type User struct {
+      //govalid:pattern=^[a-z]+$
+      Username string `json:"username"`
+  }
+  ```
+
+- **Generated Code**:
+
+  ```go
+  func ValidateUser(t *User) error {
+      if t == nil {
+          return ErrNilUser
+      }
+
+      var errs govaliderrors.ValidationErrors
+
+      if !validationhelper.MatchPattern("^[a-z]+$", t.Username) {
+          err := ErrUserUsernamePatternValidation
+          err.Value = t.Username
+          errs = append(errs, err)
+      }
+
+      if len(errs) > 0 {
+          return errs
+      }
+      return nil
+  }
+  ```
+
+- **Common Patterns**:
+  - `^[a-z]+$` - lowercase letters only
+  - `^[A-Za-z0-9]+$` - alphanumeric only
+  - `^\d{3}-\d{4}$` - phone format like "123-4567"
+  - `^[A-Z]{2}\d{4}$` - codes like "AB1234"

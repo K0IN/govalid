@@ -168,3 +168,33 @@ type IPV6 struct {
 	//govalid:ipv6
 	IP string `validate:"ipv6" json:"ip"`
 }
+
+type Pattern struct {
+	//govalid:pattern=^[a-z]+$
+	Username string `json:"username"`
+}
+
+// PatternCSV tests comma-separated lowercase values pattern
+type PatternCSV struct {
+	//govalid:pattern=^[a-z]+(,[a-z]+)*$
+	Tags string `json:"tags"`
+}
+
+// PatternPhone tests phone number pattern like "123-456-7890"
+type PatternPhone struct {
+	//govalid:pattern=^[0-9]{3}-[0-9]{3}-[0-9]{4}$
+	Phone string `json:"phone"`
+}
+
+// PatternCode tests alphanumeric code pattern like "AB1234"
+type PatternCode struct {
+	//govalid:pattern=^[A-Z]{2}[0-9]{4}$
+	Code string `json:"code"`
+}
+
+// PatternOnInt tests that pattern on non-string field is ignored
+// This should NOT generate any validation since pattern only works on strings
+type PatternOnInt struct {
+	//govalid:pattern=^[0-9]+$
+	Number int `json:"number"`
+}

@@ -83,6 +83,7 @@ For complete details, see [MARKERS.md](MARKERS.md).
 | `maxitems` | Maximum collection size | `//govalid:maxitems=10` |
 | `minitems` | Minimum collection size | `//govalid:minitems=1` |
 | `enum` | Must be one of specified values | `//govalid:enum=active,inactive` |
+| `pattern` | Match regex pattern | `//govalid:pattern=^[a-z]+$` |
 
 ### Format Validators
 
